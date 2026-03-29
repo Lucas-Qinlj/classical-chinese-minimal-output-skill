@@ -1,0 +1,7 @@
+interface:
+  display_name: "古文极简输出"
+  short_description: "以雅正文言压缩表达，少赘语而存原意"
+  default_prompt: "Use $classical-chinese-minimal-output to rewrite the answer in austere, concise Classical Chinese without adding new content."
+
+policy:
+  allow_implicit_invocation: false
