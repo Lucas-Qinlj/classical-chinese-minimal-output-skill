@@ -36,7 +36,13 @@
 └── README.md
 ```
 
-## Install
+## Manual Install for Codex
+
+以下仅为 `Codex` 本地技能目录之手动安装示例，不是 `Claude`、`Cursor`、`skills-hub` 等平台的通用导入流程。
+
+真正决定 skill 行为者，乃 [`skills/classical-chinese-minimal-output/SKILL.md`](skills/classical-chinese-minimal-output/SKILL.md)；本节只说明如何在本地放置该目录。
+
+若你使用其他 Agent 或技能平台，请依该平台自身之安装、导入或发布方式操作。
 
 将 [`skills/classical-chinese-minimal-output`](skills/classical-chinese-minimal-output) 复制到你的技能目录，例如：
 
@@ -237,6 +243,37 @@ python3 scripts/validate_skill.py
 - Skill 内部 Markdown 相对链接是否可解析
 
 GitHub Actions 亦会于推送与 Pull Request 时自动执行校验。
+
+## Publish to skills-hub
+
+本仓库已补齐 skills-hub 所需之基础 frontmatter 字段：
+
+- `name`
+- `description`
+- `version`
+- `category`
+- `platforms`
+- `tags`
+
+若欲发布到 [skills-hub.ai](https://skills-hub.ai/)，可直接执行：
+
+```bash
+npx @skills-hub-ai/cli login
+./scripts/publish_skills_hub.sh
+```
+
+脚本默认发布：
+
+- Skill 路径：`skills/classical-chinese-minimal-output/SKILL.md`
+- Visibility：`public`
+- GitHub repo：`https://github.com/Lucas-Qinlj/classical-chinese-minimal-output-skill`
+- Tags：`wenyan,classical-chinese,concise-writing,style`
+
+如需覆盖默认值，可用环境变量：
+
+```bash
+VISIBILITY=unlisted GITHUB_REPO_URL="https://github.com/your/repo" ./scripts/publish_skills_hub.sh
+```
 
 ## License
 

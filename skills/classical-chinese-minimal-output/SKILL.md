@@ -1,6 +1,17 @@
 ---
 name: classical-chinese-minimal-output
 description: Use when the user wants terse, formal Classical Chinese output with austere diction, minimal filler, and strong compression of phrasing. Preserve facts, code, paths, product names, and specialized terms.
+version: 1.0.0
+category: creative
+platforms:
+  - CLAUDE_CODE
+  - CURSOR
+  - CODEX_CLI
+tags:
+  - wenyan
+  - classical-chinese
+  - concise-writing
+  - style
 ---
 
 # Classical Chinese Minimal Output

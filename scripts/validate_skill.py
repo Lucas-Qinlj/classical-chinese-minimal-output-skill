@@ -56,6 +56,9 @@ def validate_frontmatter(skill_dir: Path) -> None:
 
     name = frontmatter.get("name", "")
     description = frontmatter.get("description", "")
+    version = frontmatter.get("version", "")
+    category = frontmatter.get("category", "")
+    platforms = frontmatter.get("platforms")
 
     if not name:
         fail(f"{skill_md.relative_to(REPO_ROOT)} is missing 'name'")
@@ -63,6 +66,14 @@ def validate_frontmatter(skill_dir: Path) -> None:
         fail(f"{skill_md.relative_to(REPO_ROOT)} has invalid skill name '{name}'")
     if not description:
         fail(f"{skill_md.relative_to(REPO_ROOT)} is missing 'description'")
+    if not version:
+        fail(f"{skill_md.relative_to(REPO_ROOT)} is missing 'version'")
+    if not re.fullmatch(r"\d+\.\d+\.\d+", version):
+        fail(f"{skill_md.relative_to(REPO_ROOT)} has invalid semver '{version}'")
+    if not category:
+        fail(f"{skill_md.relative_to(REPO_ROOT)} is missing 'category'")
+    if platforms is None:
+        fail(f"{skill_md.relative_to(REPO_ROOT)} is missing 'platforms'")
 
 
 def validate_openai_yaml(skill_dir: Path) -> None:
